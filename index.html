@@ -27,12 +27,12 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button
-                              onclick="mobileAndCaseAmount('default-mobile-value', false);totalMobilePrice('total-mobile-price', false); /*subTotal('sub-total', false)*/subTotalTest()"
+                              onclick="mobileAndCaseAmount('default-mobile-value', false);totalMobilePrice('total-mobile-price', false); subTotal()"
                               id="minus-icon" class="btn btn-default"><i class="fas fa-minus"></i></button>
 
                            <input id="default-mobile-value" type="text" class="form-control text-center" value="1">
                            <button
-                              onclick="mobileAndCaseAmount('default-mobile-value', true); totalMobilePrice('total-mobile-price', true); /*subTotal('sub-total', true)*/subTotalTest()"
+                              onclick="mobileAndCaseAmount('default-mobile-value', true); totalMobilePrice('total-mobile-price', true); subTotal()"
                               id="plus-icon" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$<span id="total-mobile-price">50</span></h5>
@@ -49,11 +49,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="mobileAndCaseAmount('default-case-value', false); totalCasePrice('total-case-price', false); /*subTotalFromCase('sub-total', false);*/subTotalTest()" class="btn btn-default"><i
+                           <button onclick="mobileAndCaseAmount('default-case-value', false); totalCasePrice('total-case-price', false); subTotal()" class="btn btn-default"><i
                                  class="fas fa-minus"></i></button>
                            <!-- working here  -->
                            <input id="default-case-value" type="text" class="form-control text-center" value="1">
-                           <button onclick="mobileAndCaseAmount('default-case-value', true); totalCasePrice('total-case-price', true); /*subTotalFromCase('sub-total', true)*/subTotalTest()" class="btn btn-default"><i
+                           <button onclick="mobileAndCaseAmount('default-case-value', true); totalCasePrice('total-case-price', true); subTotal()" class="btn btn-default"><i
                                  class="fas fa-plus"></i></button>
 
                         </div>
@@ -141,52 +141,15 @@
          return defaultValue.innerText;
       }
 
-      // sub total function
-
-      function subTotal(id, isIncrease) {
-         let defaultValue = document.getElementById(id);
-         let convertStringToNumber = parseInt(defaultValue.innerText);
-         let addedValue = convertStringToNumber;
-         if (isIncrease == true) {
-            addedValue = convertStringToNumber + 50;
-         }
-         if (isIncrease == false && addedValue > 0) {
-            addedValue = convertStringToNumber - 50;
-         }
-
-         defaultValue.innerText = addedValue;
-         return defaultValue.innerText;
-      }
-
-      // sub total for case
-
-      function subTotalFromCase(id, isIncrease){
-         let defaultValue = document.getElementById(id);
-         let convertStringToNumber = parseInt(defaultValue.innerText);
-         let addedValue = convertStringToNumber;
-         if (isIncrease == true) {
-            addedValue = convertStringToNumber + 20;
-         }
-         if (isIncrease == false && addedValue > 0) {
-            addedValue = convertStringToNumber - 20;
-         }
-
-         defaultValue.innerText = addedValue;
-         return defaultValue.innerText;
-      }
-
-
       // sub total test
-      function subTotalTest(){
+      function subTotal(){
          let defaultValueForMobile = document.getElementById("total-mobile-price");
          let convertStringToNumberForMobile = parseInt(defaultValueForMobile.innerText);
          let defaultValueForCase = document.getElementById("total-case-price");
          let convertStringToNumberForCase = parseInt(defaultValueForCase.innerText);
          let sumOfMobileAndCase = convertStringToNumberForMobile + convertStringToNumberForCase;
 
-         let defaultValue = document.getElementById("sub-total");
-         // let convertStringToNumber = parseInt(defaultValue.innerText);
-         // let addedValue = convertStringToNumber;         
+         let defaultValue = document.getElementById("sub-total");                 
 
          defaultValue.innerText = sumOfMobileAndCase;
          return defaultValue.innerText;
