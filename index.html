@@ -8,6 +8,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
    <link href="style.css" rel="stylesheet">
+   <script src="script.js"></script>
 </head>
 
 <body>
@@ -25,11 +26,12 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="common('default-value', false)" id="minus-icon" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <!-- working here  -->
+                           <input id="default-value" type="text" class="form-control text-center" value="1">
+                           <button onclick="common('default-value', true)" id="plus-icon" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="total">50</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -48,7 +50,7 @@
                            <button class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$20</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +79,52 @@
          </div>
       </div>
    </section>
+
+   <!-- java script is here  -->
+   <script>
+      // const plusButtonClick = document.getElementById("plus-icon").addEventListener("click", function () {         
+      //    common("default-value", true);
+      // });
+
+      // const minusButtonClick = document.getElementById("minus-icon").addEventListener("click", function () {         
+      //    common("default-value", false);
+      // });
+
+
+      
+      // common function 
+      // function common(id, isIncrease) {
+      //    let defaultValue = document.getElementById(id);
+      //    let convertStringToNumber = parseInt(defaultValue.value);
+      //    let addedValue = convertStringToNumber;
+      //    if(isIncrease == true){
+      //       addedValue = convertStringToNumber + 1;
+      //    }
+      //    if(isIncrease == false && addedValue > 0){
+      //       addedValue = convertStringToNumber - 1;
+      //    }         
+                
+      //    defaultValue.value = addedValue;
+      //    return defaultValue.value;                   
+      // }
+
+      // sum function 
+      function common(id, isIncrease) {
+         let defaultValue = document.getElementById(id);
+         let convertStringToNumber = parseInt(defaultValue.value);
+         let addedValue = convertStringToNumber;
+         if(isIncrease == true){
+            addedValue = convertStringToNumber + 1;
+         }
+         if(isIncrease == false && addedValue > 0){
+            addedValue = convertStringToNumber - 1;
+         }         
+                
+         defaultValue.value = addedValue;
+         return defaultValue.value;                   
+      }
+
+   </script>
 </body>
 
 </html>
